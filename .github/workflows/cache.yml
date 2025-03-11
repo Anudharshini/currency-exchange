@@ -1,0 +1,34 @@
+name: CacheReport
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    name: Build and analyze
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures proper analysis
+
+      - name: Restore Cached Exchange Rates
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/exchange-rates
+          key: exchange-rates-${{ runner.os }}-${{ github.ref }}
+          restore-keys: |
+            exchange-rates-${{ runner.os }}-
+
+      - name: Fetch Exchange Rates (if cache is empty)
+        run: |
+          mkdir -p ~/.cache/exchange-rates
+          if [ ! -f ~/.cache/exchange-rates/latest.json ]; then
+            curl -o ~/.cache/exchange-rates/latest.json "https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/USD"
+          fi
+
+      - name: Verify Cache Contents
+        run: cat ~/.cache/exchange-rates/latest.json
