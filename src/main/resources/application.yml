@@ -1,20 +1,8 @@
 spring:
   profiles.active: dev
   application.name: currency-exchange
----
-spring:
-  config:
-    activate:
-      on-profile: dev
 
----
-spring:
-  config:
-    activate:
-      on-profile: stage
+api:
+  key: E5F32LZYGqfKv6WjTg8xJH9Ql7O3c1YXa2N5V0ZBvH8
 
----
-spring:
-  config:
-    activate:
-      on-profile: prod
+

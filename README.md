@@ -1,7 +1,7 @@
 # Currency Exchange and Discount Calculation
 
 ## Description
-Develop a Spring Boot application that integrates with a third-party currency exchange API to retrieve real-time exchange rates. The application should calculate the total payable amount for a bill in a specified currency after applying applicable discounts.
+A Spring Boot application that integrates with a third-party currency exchange API to retrieve real-time exchange rates. The application should calculate the total payable amount for a bill in a specified currency after applying applicable discounts.
 
 ## Requirements
 
@@ -9,76 +9,64 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 - Integrate with **ExchangeRate-API** or **Open Exchange Rates** to get real-time exchange rates.
 - Example API URL:
   ```
-  https://open.er-api.com/v6/latest/{base_currency}?apikey=your-api-key
+  https://v6.exchangerate-api.com/v6/{api_key}/latest/{base_currency}
   ```
-
-### 2. Discounts and Currency Conversion Logic
-- **Discount Rules:**
-    - Employee: **30%** discount.
-    - Affiliate: **10%** discount.
-    - Customer for 2+ years: **5%** discount.
-    - $5 discount for every **$100** on the bill.
-    - **No percentage discounts** on groceries.
-    - Only **one** percentage discount applies.
-
-- **Steps:**
-    - Apply discounts.
-    - Convert total from **original currency** to **target currency**.
-    - Return the final payable amount.
-
-### 3. Authentication
-- Secure the API with authentication.
-
-### 4. API Endpoint
+### 2. API Endpoint
 #### **POST /api/calculate**
 **Request Body:**
 ```json
 {
   "items": [
-    {"name": "Laptop", "category": "Electronics", "price": 1200},
-    {"name": "Apple", "category": "Groceries", "price": 20}
+    {
+      "name": "Laptop",
+      "price": 1000.00,
+      "grocery": false
+    },
+    {
+      "name": "Milk",
+      "price": 50.00,
+      "grocery": true
+    },
+    {
+      "name": "Headphones",
+      "price": 200.00,
+      "grocery": false
+    }
   ],
-  "totalAmount": 1220,
-  "userType": "employee",
-  "customerTenure": 3,
-  "originalCurrency": "USD",
-  "targetCurrency": "INR"
+  "originalCurrency": "EUR",
+  "targetCurrency": "INR",
+  "user": {
+    "userType": "EMPLOYEE",
+    "tenureInYears": 3
+  }
 }
+
 ```
 **Response:**
 ```json
 {
-  "payableAmount": 8500.50,
-  "currency": "INR"
+  "originalBillAmount": 1250,
+  "finalCost": 80758.11433,
+  "originalCurrency": "EUR",
+  "targetCurrency": "INR"
 }
 ```
 
-### 5. Design and Testing
-- Follow **OOP principles**.
-- Provide a **UML class diagram**.
-- Write **unit tests** with mocking.
-- Keep the code **simple and maintainable**.
-
 ## Setup Instructions
 ### Prerequisites
-- Java 11+, Spring Boot, Maven, API key.
+- Java 17, Spring Boot, Maven, API key.
 
-### Steps
-1. **Clone the repository:**
+### Git Repo
+1. **Repository:**
    ```bash
-   git clone https://github.com/your-username/currency-exchange.git
-   cd currency-exchange
+    https://github.com/Anudharshini/currency-exchange.git
    ```
-2. **Update API key in properties file:**
-   ```
-   exchange.api.key=your-api-key
-   ```
-3. **Run the application:**
+2. **Run the application:**
    ```bash
    mvn clean install
    mvn spring-boot:run
    ```
-4. **API available at:** `http://localhost:8080/api/calculate`
+3. **API available at:** `http://localhost:8080/api/calculate`
 
 ## Author
 Anu Dharshini B
