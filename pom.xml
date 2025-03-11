@@ -21,6 +21,8 @@
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
 		<junit-jupiter.version>5.4.0</junit-jupiter.version> <!-- Version 5.4.0 and above provide support for Ordered Tests -->
 		<jackson-bom.version>2.14.1</jackson-bom.version>
+		<sonar.organization>anudharshini</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<scm>
 		<url>scm:git:https://github.com/Anudharshini/currency-exchange.git</url>
@@ -88,6 +90,7 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.13.4.1</version>
 		</dependency>
+
 
 
 		<!-- Misc -->

@@ -3,7 +3,9 @@
 ## Description
 A Spring Boot application that integrates with a third-party currency exchange API to retrieve real-time exchange rates. The application should calculate the total payable amount for a bill in a specified currency after applying applicable discounts.
 
-## Requirements
+## Currency Exchange LLD
+<img src="images/LLD.png" width="600" height="300">
+
 
 ### 1. Third-Party API Integration
 - Integrate with **ExchangeRate-API** or **Open Exchange Rates** to get real-time exchange rates.
@@ -67,6 +69,7 @@ A Spring Boot application that integrates with a third-party currency exchange A
    mvn spring-boot:run
    ```
 3. **API available at:** `http://localhost:8080/api/calculate`
+4. **Sonar Intergrated:** Actions Tab
 
 ## Author
 Anu Dharshini B
