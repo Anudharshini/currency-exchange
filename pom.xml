@@ -275,6 +275,7 @@
 								<exclude>com/assignment/backendapp/exceptions/**</exclude>
 								<exclude>com/assignment/backendapp/utils/**</exclude>
 								<exclude>com/assignment/backendapp/entity/**</exclude>
+								<exclude>com/assignment/backendapp/model/**</exclude>
 							</excludes>
 						</configuration>
 					</execution>

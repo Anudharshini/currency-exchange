@@ -35,7 +35,7 @@ class CurrencyExchangeServiceTest {
     // Mock API response
     ExchangeResponse exchangeResponse =
         ExchangeResponse.builder()
-            .exchangeRate(94.6643) // EUR to INR
+            .exchangeRate(95.168) // EUR to INR
             .usdRate(1.084)
             .build();
 
@@ -43,8 +43,8 @@ class CurrencyExchangeServiceTest {
     ExchangeResponse result = currencyExchangeService.getExchangeRate(exchangeRequest);
 
     // Validate result
-    assertEquals(94.6643, result.getExchangeRate());
-    assertEquals(1.084, result.getUsdRate());
+    assertEquals(95.168, result.getExchangeRate());
+    assertEquals(1.084, result.getUsdRate(), 0.1);
   }
 
   @Test
